@@ -1,13 +1,19 @@
 ## Hi there 👋, my name is Barry McSorley
 
-- 🔭 I’m currently working on my NAS homelab docker setup without melting it's CPU!
-  -   Further tricking out my Grafana dashboard monitoring CPU, temp, broadband speed
-  -   Remote media libraries using reverse HTTPS proxies for Plex, Jellyfin, Calibre, Audiobookshelf
+- 🔭 I’m currently working on:
+  - Expanding my NAS homelab docker setup without melting it's CPU!
+  - Further tricking out my Grafana dashboard monitoring CPU, temp, broadband speed
+  - Remote media libraries using reverse HTTPS proxies for Plex, Jellyfin, Calibre, Audiobookshelf
  
-- 🌱 I’m currently learning python, cursor and all things AI....
+- 🌱 I’m currently learning:
+  - Python, cursor and all things AI....
   - Playing with code to pull down podcasts and feed into AI for transcription based on fork from [here](https://github.com/KeithGalli/Podcast-Downloader)
   - Trying to get code working to track bike availability at Belfast Bikes hub stations
-<!--
+ 
+- 💬 Ask me about:
+  - Cloud networking - AWS, GCP, Azure
+  - Home networking - reverse proxy, DNS, port forwarding, VLAN's, WiFi setup, QoS and device management
+<!--- 
 **barmcsorley/barmcsorley** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
 Here are some ideas to get you started:
