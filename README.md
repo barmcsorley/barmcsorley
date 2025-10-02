@@ -1,6 +1,8 @@
 ## Hi there 👋, my name is Barry McSorley
 
 - 🔭 I’m currently working on my NAS homelab docker setup without melting it's CPU!
+-   Further tricking out my Grafana dashboard monitoring CPU, temp, broadband speed
+-   Remote media libraries in Plex, Jellyfin, Calibre, Audiobookshelf
 - 
 - 🌱 I’m currently learning python, cursor and all things AI....
   - Playing with code to pull down podcasts and feed into AI for transcription based on fork from [here](https://github.com/KeithGalli/Podcast-Downloader)
