@@ -1,5 +1,9 @@
 ## Hi there 👋, my name is Barry McSorley
 
+- 🔭 I’m currently working on my NAS homelab docker setup without melting it's CPU!
+- 
+- 🌱 I’m currently learning python, cursor and all things AI....
+- 
 <!--
 **barmcsorley/barmcsorley** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
