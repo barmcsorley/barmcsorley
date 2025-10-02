@@ -3,8 +3,8 @@
 - 🔭 I’m currently working on my NAS homelab docker setup without melting it's CPU!
 - 
 - 🌱 I’m currently learning python, cursor and all things AI....
-- Playing with code to pull down podcasts and feed into AI for transcription
-- Trying to get code working to track bike availability at Belfast Bikes hub stations
+  - Playing with code to pull down podcasts and feed into AI for transcription based on fork from here
+  - Trying to get code working to track bike availability at Belfast Bikes hub stations
 <!--
 **barmcsorley/barmcsorley** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
