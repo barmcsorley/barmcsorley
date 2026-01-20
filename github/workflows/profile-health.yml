@@ -1,0 +1,24 @@
+name: Profile Health Check
+
+on:
+  push:
+    branches: [ main, master ]
+  schedule:
+    # Run automatically every Sunday at midnight to check for link rot
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+
+jobs:
+  link-checker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Check Links
+        uses: lycheeverse/lychee-action@v1.8.0
+        with:
+          # Check Markdown files, but ignore generic timeout errors (common with LinkedIn)
+          args: --verbose --no-progress './**/*.md' --exclude-mail
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
