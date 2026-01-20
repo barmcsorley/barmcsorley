@@ -1,29 +1,30 @@
-## Hi there 👋, my name is Barry McSorley
+### Hi there, I'm Barry McSorley 👋
 
-- 🔭 I’m currently working on:
-  - Expanding my NAS homelab docker setup without melting it's CPU!
-  - Further tricking out my Grafana dashboard monitoring CPU, temp, broadband speed
-  - Remote media libraries using reverse HTTPS proxies for Plex, Jellyfin, Calibre, Audiobookshelf
- 
-- 🌱 I’m currently learning:
-  - Python, cursor and all things AI....
-  - Playing with code to pull down podcasts and feed into AI for transcription based on fork from [here](https://github.com/KeithGalli/Podcast-Downloader)
-  - Trying to get code working to track bike availability at Belfast Bikes hub stations
- 
-- 💬 Ask me about:
-  - Cloud networking - AWS, GCP, Azure
-  - Home networking - reverse proxy, DNS, port forwarding, VLAN's, WiFi setup, QoS and device management
-<!--- 
-**barmcsorley/barmcsorley** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+**Engineering Director | Head of Platforms | Cloud Strategy Leader**
+*Based in Belfast & London*
 
-Here are some ideas to get you started:
+I am a senior technology leader with over 20 years of experience managing large-scale engineering units (£30M+ budgets) and driving DevSecOps transformations.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+While my day job involves organisational design and enterprise strategy, I believe in maintaining deep technical literacy. I run my personal infrastructure using the same **GitOps** and **IaC** principles I mandate for my engineering teams.
+
+---
+
+### 🛠️ The Tech Stack (Home & Professional)
+![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white) ![Renovate](https://img.shields.io/badge/renovate-39BAE6?style=for-the-badge&logo=renovatebot&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
+
+---
+
+### 🔭 Current "Home Lab" Architecture
+I recently migrated my self-hosted environment from a UI-based management model (Portainer/Watchtower) to a strictly declarative **GitOps model**.
+
+* **Infrastructure:** UGreen 2800DXP NAS (Docker).
+* **Orchestration:** Docker Compose managed via Git version control.
+* **Dependency Management:** Automated via **Renovate** (PR-based workflow) to ensure stability before updates.
+* **Networking:** Traefik Reverse Proxy & Cloudflare Tunnels.
+
+```mermaid
+flowchart LR
+    A[Barry / Renovate] -->|Commit / PR| B(GitHub Repository)
+    B -->|Webhook / Pull| C[UGreen NAS]
+    C -->|Deploy| D{Docker Containers}
+    D --- E[Traefik Proxy]
