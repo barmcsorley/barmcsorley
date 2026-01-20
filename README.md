@@ -65,3 +65,4 @@ flowchart LR
     class Renovate,User,Repo plain;
     class NAS,Containers,Cloudflare highlight;
     class Kuma,Grafana monitor;
+```
