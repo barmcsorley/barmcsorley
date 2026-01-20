@@ -2,7 +2,7 @@
 
 [![CI Status](https://github.com/barmcsorley/nas-stacks/actions/workflows/update-containers.yml/badge.svg)](https://github.com/barmcsorley/nas-stacks/actions)
 
-[![Profile Health](https://github.com/barmcsorley/actions/workflows/profile-health.yml/badge.svg)](https://github.com/barmcsorley/actions/workflows/profile-health.yml)
+[![Profile Health](https://github.com/barmcsorley/barmcsorley/actions/workflows/profile-health.yml/badge.svg)](https://github.com/barmcsorley/barmcsorley/actions/workflows/profile-health.yml)
 
 **Engineering Director | Head of Platforms | Cloud Strategy Leader**
 *Based in Belfast & London*
