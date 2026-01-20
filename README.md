@@ -24,8 +24,44 @@ I recently migrated my self-hosted environment from a UI-based management model 
 
 ```mermaid
 flowchart LR
-    A[Renovate / MEND] -->|Commit and raise PR| B(MEND & GitHub Repository)
-    B[Barry] -->|Merge PR or defer| B(GitHub Repository)
-    B -->|Webhook / Pull| C[UGreen NAS]
-    C -->|Deploy| D{Docker Containers}
-    D --- E[Cloudflare Proxy]
+    %% Define Subgraphs for visual grouping
+    subgraph Inputs [Ci/CD Triggers]
+        direction TB
+        Renovate[Renovate / MEND]
+        User[Barry]
+    end
+
+    subgraph Source [Source of Truth]
+        Repo(GitHub Repository)
+    end
+
+    subgraph Infra [UGreen NAS Environment]
+        NAS[GitOps Sync]
+        Containers{Docker Containers}
+        
+        subgraph Observability [Monitoring Stack]
+            direction TB
+            Kuma[Uptime Kuma<br/>(Health Checks)]
+            Grafana[Grafana<br/>(Metrics & Dashboards)]
+        end
+    end
+
+    %% The Flow Connections
+    Renovate -->|1. Raise PR| Repo
+    User -->|2. Review & Merge| Repo
+    Repo -->|3. Pull / Webhook| NAS
+    NAS -->|4. Deploy| Containers
+    
+    %% Networking & Monitoring Connections
+    Cloudflare((Cloudflare<br/>Tunnel)) <-->|Secure Ingress| Containers
+    Containers -.->|Status 200/OK| Kuma
+    Containers -.->|Logs & Stats| Grafana
+
+    %% Styling for "Director Level" polish
+    classDef plain fill:#fff,stroke:#333,stroke-width:1px;
+    classDef highlight fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
+    classDef monitor fill:#e8f5e9,stroke:#2e7d32,stroke-width:1px;
+    
+    class Renovate,User,Repo plain;
+    class NAS,Containers,Cloudflare highlight;
+    class Kuma,Grafana monitor;
