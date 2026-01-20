@@ -24,17 +24,24 @@ I recently migrated my self-hosted environment from a UI-based management model 
 
 ```mermaid
 flowchart LR
-    %% Define Subgraphs for visual grouping
-    subgraph Inputs [Ci/CD Triggers]
+    %% 1. INPUTS
+    subgraph Inputs [Trigger Events]
         direction TB
-        Renovate[Renovate / MEND]
+        Renovate[Renovate Bot]
         User[Barry]
     end
 
-    subgraph Source [Source of Truth]
-        Repo(GitHub Repository)
+    %% 2. GITHUB ECOSYSTEM (The CI/CD Engine)
+    subgraph GH [GitHub Platform]
+        direction TB
+        Repo(Repository<br/>Source of Truth)
+        Actions["GitHub Actions<br/>(Workflows & Runners)"]
+        
+        %% CI Link inside GitHub
+        Repo -->|Trigger Workflow| Actions
     end
 
+    %% 3. INFRASTRUCTURE (The CD Target)
     subgraph Infra [UGreen NAS Environment]
         NAS[GitOps Sync]
         Containers{Docker Containers}
@@ -46,23 +53,33 @@ flowchart LR
         end
     end
 
-    %% The Flow Connections - RE-ROUTED PER REQUEST
-    Renovate -->|1. Raise PR| User
-    User -->|2. Review & Merge| Repo
-    Repo -->|3. Pull / Webhook| NAS
-    NAS -->|4. Deploy| Containers
+    %% --- FLOW CONNECTIONS ---
     
-    %% Networking & Monitoring Connections
+    %% Renovate raises PR, Barry reviews
+    Renovate -->|1. Raise PR| User
+    
+    %% Barry merges to Repo
+    User -->|2. Approve & Merge| Repo
+    
+    %% Actions validates and hands off to NAS
+    Actions -->|3. Validated Config / Webhook| NAS
+    
+    %% NAS deploys
+    NAS -->|4. Deploy / Recreate| Containers
+    
+    %% Networking & Monitoring
     Cloudflare(("Cloudflare<br/>Tunnel")) <-->|Secure Ingress| Containers
-    Containers -.->|Status 200/OK| Kuma
-    Containers -.->|Logs & Stats| Grafana
+    Containers -.->|Status 200| Kuma
+    Containers -.->|Logs & Metrics| Grafana
 
-    %% Styling for "Director Level" polish
+    %% --- STYLING ---
     classDef plain fill:#fff,stroke:#333,stroke-width:1px;
-    classDef highlight fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
+    classDef gh fill:#f6f8fa,stroke:#24292e,stroke-width:2px;
+    classDef infra fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
     classDef monitor fill:#e8f5e9,stroke:#2e7d32,stroke-width:1px;
     
-    class Renovate,User,Repo plain;
-    class NAS,Containers,Cloudflare highlight;
+    class Renovate,User plain;
+    class Repo,Actions gh;
+    class NAS,Containers,Cloudflare infra;
     class Kuma,Grafana monitor;
 ```
