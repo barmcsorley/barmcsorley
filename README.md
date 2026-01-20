@@ -3,7 +3,7 @@
 **Engineering Director | Head of Platforms | Cloud Strategy Leader**
 *Based in Belfast & London*
 
-I am a senior technology leader with over 20 years of experience managing large-scale engineering units (£30M+ budgets) and driving DevSecOps transformations.
+I am a senior technology leader with over 20 years of experience managing large-scale engineering units and driving DevSecOps transformations.
 
 While my day job involves organisational design and enterprise strategy I believe in maintaining deep technical literacy, so I run my personal infrastructure using the same **GitOps** and **IaC** principles I mandate for my engineering teams as it helps me understand the challenges and benefits it can accrue.
 
