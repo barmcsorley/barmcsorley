@@ -19,7 +19,7 @@ I recently migrated my self-hosted environment from a UI-based management model 
 
 * **Infrastructure:** UGreen 2800DXP NAS (Docker).
 * **Orchestration:** Docker Compose managed via Git version control.
-* **Dependency Management:** Automated via **Renovate** (PR-based workflow using MEND license) to ensure stability before updates. PR's assessed daily by me - generally merged if minor update, research if major. Perapp/container Database normally left as is for stability.
+* **Dependency Management:** Automated via **Renovate** (PR-based workflow using MEND license) to ensure stability before updates. PR's assessed daily by me - generally merged if minor update, research if major. Per app/container Database normally left as is for stability.
 * **Networking:** Cloudflare Reverse Proxy & Tunnels. Tailscale for remote secure access.
 
 ```mermaid
