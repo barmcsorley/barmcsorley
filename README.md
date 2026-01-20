@@ -41,8 +41,9 @@ flowchart LR
         
         subgraph Observability [Monitoring Stack]
             direction TB
-            Kuma[Uptime Kuma<br/>(Health Checks)]
-            Grafana[Grafana<br/>(Metrics & Dashboards)]
+            %% FIX: Added quotes around labels containing brackets/parentheses
+            Kuma["Uptime Kuma<br/>(Health Checks)"]
+            Grafana["Grafana<br/>(Metrics & Dashboards)"]
         end
     end
 
@@ -53,7 +54,8 @@ flowchart LR
     NAS -->|4. Deploy| Containers
     
     %% Networking & Monitoring Connections
-    Cloudflare((Cloudflare<br/>Tunnel)) <-->|Secure Ingress| Containers
+    %% FIX: Added quotes here too just to be safe
+    Cloudflare(("Cloudflare<br/>Tunnel")) <-->|Secure Ingress| Containers
     Containers -.->|Status 200/OK| Kuma
     Containers -.->|Logs & Stats| Grafana
 
