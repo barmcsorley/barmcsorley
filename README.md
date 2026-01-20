@@ -5,7 +5,7 @@
 
 I am a senior technology leader with over 20 years of experience managing large-scale engineering units (£30M+ budgets) and driving DevSecOps transformations.
 
-While my day job involves organisational design and enterprise strategy, I believe in maintaining deep technical literacy. I run my personal infrastructure using the same **GitOps** and **IaC** principles I mandate for my engineering teams.
+While my day job involves organisational design and enterprise strategy I believe in maintaining deep technical literacy, so I run my personal infrastructure using the same **GitOps** and **IaC** principles I mandate for my engineering teams as it helps me understand the challenges and benefits it can accrue.
 
 ---
 
@@ -19,12 +19,13 @@ I recently migrated my self-hosted environment from a UI-based management model 
 
 * **Infrastructure:** UGreen 2800DXP NAS (Docker).
 * **Orchestration:** Docker Compose managed via Git version control.
-* **Dependency Management:** Automated via **Renovate** (PR-based workflow) to ensure stability before updates.
-* **Networking:** Traefik Reverse Proxy & Cloudflare Tunnels.
+* **Dependency Management:** Automated via **Renovate** (PR-based workflow using MEND license) to ensure stability before updates. PR's assessed daily by me - generally merged if minor update, research if major. Perapp/container Database normally left as is for stability.
+* **Networking:** Cloudflare Reverse Proxy & Tunnels. Tailscale for remote secure access.
 
 ```mermaid
 flowchart LR
-    A[Barry / Renovate] -->|Commit / PR| B(GitHub Repository)
+    A[Renovate / MEND] -->|Commit and raise PR| B(MEND & GitHub Repository)
+    B[Barry] -->|Merge PR or defer| B(GitHub Repository)
     B -->|Webhook / Pull| C[UGreen NAS]
     C -->|Deploy| D{Docker Containers}
-    D --- E[Traefik Proxy]
+    D --- E[Cloudflare Proxy]
