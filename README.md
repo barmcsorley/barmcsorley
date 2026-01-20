@@ -41,20 +41,18 @@ flowchart LR
         
         subgraph Observability [Monitoring Stack]
             direction TB
-            %% FIX: Added quotes around labels containing brackets/parentheses
             Kuma["Uptime Kuma<br/>(Health Checks)"]
             Grafana["Grafana<br/>(Metrics & Dashboards)"]
         end
     end
 
-    %% The Flow Connections
-    Renovate -->|1. Raise PR| Repo
+    %% The Flow Connections - RE-ROUTED PER REQUEST
+    Renovate -->|1. Raise PR| User
     User -->|2. Review & Merge| Repo
     Repo -->|3. Pull / Webhook| NAS
     NAS -->|4. Deploy| Containers
     
     %% Networking & Monitoring Connections
-    %% FIX: Added quotes here too just to be safe
     Cloudflare(("Cloudflare<br/>Tunnel")) <-->|Secure Ingress| Containers
     Containers -.->|Status 200/OK| Kuma
     Containers -.->|Logs & Stats| Grafana
