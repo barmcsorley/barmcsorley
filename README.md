@@ -1,6 +1,5 @@
 ### Hi there, I'm Barry McSorley 👋
 
-[![CI Status](https://github.com/barmcsorley/nas-stacks/.github/workflows/update-containers.yml/badge.svg)](https://github.com/barmcsorley/nas-stacks/actions)
 [![CI Status](https://github.com/barmcsorley/nas-stacks/actions/workflows/update-containers.yml/badge.svg)](https://github.com/barmcsorley/nas-stacks/actions)
 
 **Engineering Director | Head of Platforms | Cloud Strategy Leader**
