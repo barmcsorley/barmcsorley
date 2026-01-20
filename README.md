@@ -1,5 +1,5 @@
 ### Hi there, I'm Barry McSorley 👋
-
+[![CI Status](https://github.com/barmcsorley/home-ops-template/actions/workflows/ci.yml/badge.svg)](https://github.com/barmcsorley/home-ops-template/actions)
 **Engineering Director | Head of Platforms | Cloud Strategy Leader**
 *Based in Belfast & London*
 
@@ -83,3 +83,10 @@ flowchart LR
     class NAS,Containers,Cloudflare infra;
     class Kuma,Grafana monitor;
 ```
+CI/CD Workflow Logic: To prevent configuration drift or syntax errors from breaking the production environment, I utilise GitHub Actions Runners.
+
+Validation: Every PR triggers a workflow that lints the docker-compose.yml files and verifies schema compliance.
+
+Security: MEND/Renovate scans for vulnerable dependencies, ensuring the stack remains secure by design.
+
+Deployment: Only after the workflow passes (Green Build) is the code merged to main, where the NAS pulls the validated state.
