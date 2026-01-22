@@ -17,7 +17,7 @@ While my day job involves organisational design and enterprise strategy I believ
 ---
 
 ### 🔭 Current "Home Lab" Architecture
-I recently migrated my self-hosted environment from a UI-based management model (Docker Compose YAML -> Portainer -> Watchtower) to a strictly declarative **GitOps model**. Apart from being super useful to try new tech like Mend Renovate and private AI LLM's (using Ollama) it means that should be home NAS ever go kaput (and my 3-2-1 backups also fail for some reason) I can simply replace the harddisk/server, connect it to my GitHub repo and I'll have my entire home-lab setup back up and running in minutes.
+I recently migrated my self-hosted environment from a UI-based management model (Docker Compose YAML -> Portainer -> Watchtower) to a strictly declarative **GitOps model**. Apart from being super useful to try new tech like Mend Renovate, private AI LLM's (using Ollama), private MCP Server and Agentic AI setup, it also means that should be home NAS ever go kaput (and my 3-2-1 backups also fail for some reason) I can simply replace the harddisk/server, connect it to my GitHub repo and I'll have my entire home-lab setup back up and running in minutes.
 
 * **Infrastructure:** UGreen 2800DXP NAS (Docker).
 * **Orchestration:** Docker Compose managed via Git version control.
