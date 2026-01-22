@@ -18,10 +18,10 @@ While my day job involves organisational design and enterprise strategy, I belie
 ---
 
 ### 🔭 Architecture & "Sovereign AI" Lab
-I recently migrated my self-hosted environment from a manual management model to a strictly declarative **GitOps model**. Beyond standard hosting, this environment serves as a research lab for **AI-Augmented Engineering**.
+I recently migrated my self-hosted environment from a manual management model to a strictly declarative **GitOps model**. Beyond standard hosting, this environment serves as a research lab for **AI-Augmented Engineering and Software Development**.
 
 #### The "Agentic" Frontier
-I am currently pioneering **Agentic DevOps** workflows by running a private **Model Context Protocol (MCP)** server on my NAS. This allows my local LLM development environment (Cursor) to securely "talk" to my infrastructure—querying container states, checking logs, and performing triage via natural language.
+I am currently pioneering **Agentic DevOps** workflows by running a private **Model Context Protocol (MCP)** server on my NAS. This allows my local LLM development environment (Cursor and Google Antigravity) to securely "talk" to my infrastructure — querying container states, checking logs, and performing triage via natural language.
 
 * **Infrastructure:** UGreen 2800DXP NAS (Linux/Docker).
 * **AI & RAG:** Local Ollama inference (Llama 3, DeepSeek) with ChromaDB for document retrieval.
