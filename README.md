@@ -7,37 +7,44 @@
 
 I am a senior technology leader with over 20 years of experience managing large-scale engineering units and driving DevSecOps transformations.
 
-While my day job involves organisational design and enterprise strategy I believe in maintaining deep technical literacy, so I run my personal home-lab slef-hosted infrastructure using the same **GitOps** and **IaC** principles I mandate for my engineering teams as it helps me understand the challenges and benefits it can accrue.
+While my day job involves organisational design and enterprise strategy, I believe in maintaining deep technical literacy. I run my personal infrastructure using the same **GitOps**, **IaC**, and **Zero Trust** principles I mandate for my engineering teams. This "sandbox" approach allows me to prototype emerging patterns—specifically **Agentic AI** and **Sovereign RAG**—before introducing them to the enterprise.
 
 ---
 
-### 🛠️ The Tech Stack (Home & Professional)
-![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white) ![Renovate](https://img.shields.io/badge/renovate-39BAE6?style=for-the-badge&logo=renovatebot&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
+### 🛠️ The Tech Stack
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![Renovate](https://img.shields.io/badge/renovate-39BAE6?style=for-the-badge&logo=renovatebot&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
+![Grafana](https://img.shields.io/badge/grafana-%23F46800.svg?style=for-the-badge&logo=grafana&logoColor=white) ![Prometheus](https://img.shields.io/badge/prometheus-%23E6522C.svg?style=for-the-badge&logo=prometheus&logoColor=white) ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Ollama](https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white)
 
 ---
 
-### 🔭 Current "Home Lab" Architecture
-I recently migrated my self-hosted environment from a UI-based management model (Docker Compose YAML -> Portainer -> Watchtower) to a strictly declarative **GitOps model**. Apart from being super useful to try new tech like Mend Renovate, private AI LLM's (using Ollama), private MCP Server and Agentic AI setup, it also means that should be home NAS ever go kaput (and my 3-2-1 backups also fail for some reason) I can simply replace the harddisk/server, connect it to my GitHub repo and I'll have my entire home-lab setup back up and running in minutes.
+### 🔭 Architecture & "Sovereign AI" Lab
+I recently migrated my self-hosted environment from a manual management model to a strictly declarative **GitOps model**. Beyond standard hosting, this environment serves as a research lab for **AI-Augmented Engineering**.
 
-* **Infrastructure:** UGreen 2800DXP NAS (Docker).
+#### The "Agentic" Frontier
+I am currently pioneering **Agentic DevOps** workflows by running a private **Model Context Protocol (MCP)** server on my NAS. This allows my local LLM development environment (Cursor) to securely "talk" to my infrastructure—querying container states, checking logs, and performing triage via natural language.
+
+* **Infrastructure:** UGreen 2800DXP NAS (Linux/Docker).
+* **AI & RAG:** Local Ollama inference (Llama 3, DeepSeek) with ChromaDB for document retrieval.
 * **Orchestration:** Docker Compose managed via Git version control.
-* **Dependency Management:** Automated via **Renovate** (PR-based workflow using MEND license) to ensure stability before updates. PR's assessed daily by me - generally merged if minor update, research if major. Per app/container Database normally left as is for stability.
-* **Networking:** Cloudflare Reverse Proxy & Tunnels. Tailscale for remote secure access.
+* **Dependency Management:** Automated via **Renovate** (Mend) to ensure supply chain security.
+* **Observability:** Prometheus & Uptime Kuma feeding into Grafana Dashboards.
+* **Networking:** Cloudflare Tunnels (Zero Trust) & Tailscale.
 
 ```mermaid
 flowchart LR
-    %% 1. INPUTS
-    subgraph Inputs [Trigger Events]
+    %% 1. INPUTS & AGENTS
+    subgraph Inputs [Control Plane]
         direction TB
         Renovate[Renovate Bot]
-        User[Barry]
+        User[Barry / Vibe Coding]
+        AI_Agent[Cursor AI Agent]
     end
 
     %% 2. GITHUB ECOSYSTEM (The CI/CD Engine)
     subgraph GH [GitHub Platform]
         direction TB
         Repo(Repository<br/>Source of Truth)
-        Actions["GitHub Actions<br/>(Workflows & Runners)"]
+        Actions["GitHub Actions<br/>(Lint & Audit)"]
         
         %% CI Link inside GitHub
         Repo -->|Trigger Workflow| Actions
@@ -46,12 +53,17 @@ flowchart LR
     %% 3. INFRASTRUCTURE (The CD Target)
     subgraph Infra [UGreen NAS Environment]
         NAS[GitOps Sync]
-        Containers{Docker Containers}
+        
+        subgraph Compute [Container Runtime]
+            Containers{App Containers}
+            MCP_Server[MCP Server<br/>(Docker Socket)]
+            Ollama[Ollama & RAG]
+        end
         
         subgraph Observability [Monitoring Stack]
             direction TB
-            Kuma["Uptime Kuma<br/>(Health Checks)"]
-            Grafana["Grafana<br/>(Metrics & Dashboards)"]
+            Kuma["Uptime Kuma"]
+            Grafana["Grafana"]
         end
     end
 
@@ -63,8 +75,13 @@ flowchart LR
     %% Barry merges to Repo
     User -->|2. Approve & Merge| Repo
     
+    %% Agentic Workflow (The New Director Flex)
+    User -.->|Prompt| AI_Agent
+    AI_Agent <==>|Secure SSE Stream| MCP_Server
+    MCP_Server -.->|Read/Act| Containers
+    
     %% Actions validates and hands off to NAS
-    Actions -->|3. Validated Config / Webhook| NAS
+    Actions -->|3. Validated Config| NAS
     
     %% NAS deploys
     NAS -->|4. Deploy / Recreate| Containers
@@ -79,16 +96,10 @@ flowchart LR
     classDef gh fill:#f6f8fa,stroke:#24292e,stroke-width:2px;
     classDef infra fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
     classDef monitor fill:#e8f5e9,stroke:#2e7d32,stroke-width:1px;
+    classDef ai fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,stroke-dasharray: 5 5;
     
     class Renovate,User plain;
     class Repo,Actions gh;
-    class NAS,Containers,Cloudflare infra;
+    class NAS,Containers,Cloudflare,MCP_Server,Ollama infra;
     class Kuma,Grafana monitor;
-```
-CI/CD Workflow Logic: To prevent configuration drift or syntax errors from breaking the production environment, I utilise GitHub Actions Runners.
-
-Validation: Every PR triggers a workflow that lints the docker-compose.yml files and verifies schema compliance.
-
-Security: MEND/Renovate scans for vulnerable dependencies, ensuring the stack remains secure by design.
-
-Deployment: Only after the workflow passes (Green Build) is the code merged to main, where the NAS pulls the validated state.
+    class AI_Agent ai;
