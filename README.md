@@ -43,7 +43,7 @@ flowchart LR
     %% 2. GITHUB ECOSYSTEM (The CI/CD Engine)
     subgraph GH [GitHub Platform]
         direction TB
-        Repo(Repository<br/>Source of Truth)
+        Repo("Repository<br/>Source of Truth")
         Actions["GitHub Actions<br/>(Lint & Audit)"]
         
         %% CI Link inside GitHub
@@ -56,8 +56,8 @@ flowchart LR
         
         subgraph Compute [Container Runtime]
             Containers{App Containers}
-            MCP_Server[MCP Server<br/>(Docker Socket)]
-            Ollama[Ollama & RAG]
+            MCP_Server["MCP Server<br/>(Docker Socket)"]
+            Ollama["Ollama & RAG"]
         end
         
         subgraph Observability [Monitoring Stack]
