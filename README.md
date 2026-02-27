@@ -8,15 +8,7 @@
 
 ![Security Scan](https://github.com/barmcsorley/nas-stacks/actions/workflows/security-scan.yml/badge.svg)
 
-![Uptime Kuma](https://img.shields.io/endpoint?url=https://status.mcsorley.org.uk/api/badge/1/status)
-
-![Uptime Kuma Status](https://status.mcsorley.org.uk/api/badge/1/status?style=flat-square)
-
 ![Home Lab Status](https://status.mcsorley.org.uk/api/status-page/homelab/badge?style=flat-square&label=Home%20Lab)
-
-![Global NAS Status]([https://status.mcsorley.org.uk/api/badge/status-page/home/status](https://status.mcsorley.org.uk/api/status-page/homelab/badge))
-
-![Home Lab Status](https://status.mcsorley.org.uk/api/badge/status-page/homelab?style=flat-square)
 
 **Engineering Director | Head of Platforms | Cloud Strategy Leader**
 *Based in Belfast & London*
