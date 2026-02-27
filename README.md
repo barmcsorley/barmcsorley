@@ -10,6 +10,8 @@
 
 ![Home Lab Status](https://status.mcsorley.org.uk/api/status-page/homelab/badge?style=flat-square&label=Home%20Lab)
 
+![Infra Status](https://status.mcsorley.org.uk/api/status-page/homelab/badge?style=flat-square&label=Infrastructure)
+
 ***Engineering Director | Head of Platforms | Cloud Strategy Leader***
 *Based in Belfast & London*
 
