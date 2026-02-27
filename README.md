@@ -10,7 +10,7 @@
 
 ![Home Lab Status](https://status.mcsorley.org.uk/api/status-page/homelab/badge?style=flat-square&label=Home%20Lab)
 
-**Engineering Director | Head of Platforms | Cloud Strategy Leader**
+***Engineering Director | Head of Platforms | Cloud Strategy Leader***
 *Based in Belfast & London*
 
 I am a senior technology leader with over 20 years of experience managing large-scale engineering units and driving DevSecOps transformations.
