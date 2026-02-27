@@ -47,7 +47,7 @@ My personal "sandbox" uses enterprise-grade patterns to manage over 35+ services
 
 📊 Real-Time Observability
 
-* Status Page: Live Infrastructure Status (Powered by Uptime Kuma & Cloudflare Zero Trust).
+* **Status Page:** [Live Infrastructure Status](https://status.mcsorley.org.uk/) (Powered by Uptime Kuma & Cloudflare Zero Trust).
 
 * Alerting: Real-time deployment and health telemetry routed via Discord webhooks.
 
