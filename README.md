@@ -4,6 +4,10 @@
 
 [![Security: Mend Bolt](https://img.shields.io/badge/Security-Mend%20Bolt-blue?style=for-the-badge&logo=mend&logoColor=white)](https://github.com/marketplace/mend-bolt)
 
+![NAS Deployment](https://github.com/barmcsorley/nas-stacks/actions/workflows/NAS-Container-Update.yml/badge.svg)
+
+![Security Scan](https://github.com/barmcsorley/nas-stacks/actions/workflows/security-scan.yml/badge.svg)
+
 **Engineering Director | Head of Platforms | Cloud Strategy Leader**
 *Based in Belfast & London*
 
