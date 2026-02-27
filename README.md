@@ -45,6 +45,14 @@ My personal "sandbox" uses enterprise-grade patterns to manage over 35+ services
 
 * Observability & Health Checks: Containers use internal healthchecks (e.g., ollama list or curl) to verify service readiness, with real-time deployment status pushed to Discord via webhooks.
 
+📊 Real-Time Observability
+
+* Status Page: Live Infrastructure Status (Powered by Uptime Kuma & Cloudflare Zero Trust).
+
+* Alerting: Real-time deployment and health telemetry routed via Discord webhooks.
+
+* Availability: High-speed access to Jellyfin and Sovereign RAG (Ollama) via low-latency tunnels, tailored for remote work.
+
 ### 🔭 Architecture & "Sovereign AI" Lab
 I recently migrated my self-hosted environment from a manual management model to a strictly declarative **GitOps model**. Beyond standard hosting, this environment serves as a research lab for **AI-Augmented Engineering and Software Development**.
 
