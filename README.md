@@ -12,7 +12,7 @@
 
 ![Uptime Kuma Status](https://status.mcsorley.org.uk/api/badge/1/status?style=flat-square)
 
-![Global Status]([https://status.mcsorley.org.uk/api/badge/status-page/home/status](https://status.mcsorley.org.uk/api/status-page/homelab/badge))
+![Global NAS Status]([https://status.mcsorley.org.uk/api/badge/status-page/home/status](https://status.mcsorley.org.uk/api/status-page/homelab/badge))
 
 ![Home Lab Status](https://status.mcsorley.org.uk/api/badge/status-page/homelab?style=flat-square)
 
