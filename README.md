@@ -26,18 +26,18 @@ While my day job involves organisational design and enterprise strategy, I belie
 🏠 Home Lab & GitOps
 My home infrastructure is fully automated using a GitOps methodology.
 
-* Hardware: UGreen 2800DXP NAS (Intel N100 | 16GB RAM) [cite: 2025-12-21].
+* Hardware: UGreen 2800DXP NAS (Intel N100 | 16GB RAM) 
 
-* Automation: Renovate for automated dependency pinning and updates [cite: 2026-01-03].
+* Automation: Renovate for automated dependency pinning and updates 
 
 * Deployment: Custom Smart GitHub Actions pipeline using a self-hosted runner to surgically update 35+ Docker stacks.
 
 * Security: Automated Trivy IaC scanning on every pull request.
 
 🏗️ Infrastructure Architecture: GitOps & DevSecOps
-My personal "sandbox" uses enterprise-grade patterns to manage over 35+ services on a UGreen 2800DXP [cite: 2025-12-21].
+My personal "sandbox" uses enterprise-grade patterns to manage over 35+ services on a UGreen 2800DXP 
 
-* Automated Dependency Management: Renovate monitors container registries for updates and pins versions via SHA256 digests for maximum supply-chain security [cite: 2026-01-03].
+* Automated Dependency Management: Renovate monitors container registries for updates and pins versions via SHA256 digests for maximum supply-chain security 
 
 * Continuous Security (DevSecOps): Every Pull Request is scanned by Trivy IaC to ensure no high or critical vulnerabilities exist in my Docker Compose configurations before they reach production.
 
