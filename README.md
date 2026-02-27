@@ -34,6 +34,17 @@ My home infrastructure is fully automated using a GitOps methodology.
 
 * Security: Automated Trivy IaC scanning on every pull request.
 
+🏗️ Infrastructure Architecture: GitOps & DevSecOps
+My personal "sandbox" uses enterprise-grade patterns to manage over 35+ services on a UGreen 2800DXP [cite: 2025-12-21].
+
+* Automated Dependency Management: Renovate monitors container registries for updates and pins versions via SHA256 digests for maximum supply-chain security [cite: 2026-01-03].
+
+* Continuous Security (DevSecOps): Every Pull Request is scanned by Trivy IaC to ensure no high or critical vulnerabilities exist in my Docker Compose configurations before they reach production.
+
+* Surgical Deployments: A custom GitHub Actions pipeline runs on a self-hosted runner. It uses git diff to identify only the modified stacks, reducing deployment times from 40+ minutes to under 2 minutes.
+
+* Observability & Health Checks: Containers use internal healthchecks (e.g., ollama list or curl) to verify service readiness, with real-time deployment status pushed to Discord via webhooks.
+
 ### 🔭 Architecture & "Sovereign AI" Lab
 I recently migrated my self-hosted environment from a manual management model to a strictly declarative **GitOps model**. Beyond standard hosting, this environment serves as a research lab for **AI-Augmented Engineering and Software Development**.
 
