@@ -10,6 +10,10 @@
 
 ![Uptime Kuma](https://img.shields.io/endpoint?url=https://status.mcsorley.org.uk/api/badge/1/status)
 
+![Uptime Kuma Status](https://status.mcsorley.org.uk/api/badge/1/status?style=flat-square)
+
+![Global Status](https://status.mcsorley.org.uk/api/badge/status-page/home/status)
+
 **Engineering Director | Head of Platforms | Cloud Strategy Leader**
 *Based in Belfast & London*
 
