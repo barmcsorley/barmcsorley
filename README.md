@@ -8,7 +8,7 @@
 
 ![Security Scan](https://github.com/barmcsorley/nas-stacks/actions/workflows/security-scan.yml/badge.svg)
 
-* **System Health:** ![Uptime Kuma](https://img.shields.io/endpoint?url=https://status.mcsorley.org.uk/api/badge/1/status)
+![Uptime Kuma](https://img.shields.io/endpoint?url=https://status.mcsorley.org.uk/api/badge/1/status)
 
 **Engineering Director | Head of Platforms | Cloud Strategy Leader**
 *Based in Belfast & London*
