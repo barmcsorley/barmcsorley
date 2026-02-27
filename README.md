@@ -23,6 +23,17 @@ While my day job involves organisational design and enterprise strategy, I belie
 
 ---
 
+🏠 Home Lab & GitOps
+My home infrastructure is fully automated using a GitOps methodology.
+
+* **Hardware: UGreen 2800DXP NAS (Intel N100 | 16GB RAM) [cite: 2025-12-21].
+
+* **Automation: Renovate for automated dependency pinning and updates [cite: 2026-01-03].
+
+* **Deployment: Custom Smart GitHub Actions pipeline using a self-hosted runner to surgically update 35+ Docker stacks.
+
+* **Security: Automated Trivy IaC scanning on every pull request.
+
 ### 🔭 Architecture & "Sovereign AI" Lab
 I recently migrated my self-hosted environment from a manual management model to a strictly declarative **GitOps model**. Beyond standard hosting, this environment serves as a research lab for **AI-Augmented Engineering and Software Development**.
 
