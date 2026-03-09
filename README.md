@@ -57,6 +57,41 @@ My personal "sandbox" uses enterprise-grade patterns to manage over 35+ services
 
 * Availability: High-speed access to Jellyfin and Sovereign RAG (Ollama) via low-latency tunnels, tailored for remote work.
 
+### Coding
+Having "vibe coded" a number of standalone apps using Cursor, Antigravity and Claude Code that worked purely as standalone happy-path apps I wanted to evolve from prototypes to a structured, professional workflow. My setup uses a Macbook for local coding, a UGreen 2800DXP NAS (brilliant upgrade on my Synology NAS of many years) , a GitOps model using Renovate for update PR's ) and so I wanted to have a "Local-First, Git-Led" architecture. To clean up the "messy and disjointed" feel I treat my MacBook as the Workbench, my NAS as the Production Environment and using GitHub as the single source of truth.
+
+### Current Daily Driver IDE/Tool: Cursor
+Whilst I will continue to play with Claude Code and Antigravity as it allows me access to all the underlying LLM models and also to track what is happening in the industry as move from pure-IDE to agentic-led dev I will continue to use Cursor as my main driver for a "single tool" as right now I think it offers the best balance of AI Autonomy (Composer/Agent mode) and Manual Control. Unlike Claude Code (terminal-only) or Antigravity (agent-first), Cursor lets me jump between high-level "vibing" and low-level technical debugging instantly. It also handles complex Git operations (branching, commits, PRs) natively which is essential for my GitOps workflow.
+
+### The "Vibe-to-Prod" Architecture
+To keep things organized I've adopted a Repository-Centric workflow. No files should live only on my MacBook or only on my NAS or only in GitHub.
+
+## 1. The Workbench (MacBook + Cursor)
+Rule: Every app gets its own GitHub repository.
+Local Setup: Cloned the repo to my MacBook and open the folder in Cursor.
+The Vibe: Using Cursor’s Agent Mode to build the app and use the .cursorrules file in each project to define your stack ("Always use Docker Compose," "Use UK English," "Prefer Tailwind for CSS" etc.).
+
+## 2. The Source of Truth (GitHub)
+Branching: I use a simple main branch for all apps.
+Updates: Once I'm happy with a feature in Cursor, I commit and push to GitHub.
+Trivy: Scans every Git push on commit to scan repo and container images for vulnerabilities (CVEs), IaC misconfigurations and hardcoded secrets (my secrets stored in .env files hosted on NAS for security so never on GitHub)
+Renovate: My existing Renovate setup monitors these repos for dependency updates keeping my apps secure and up to date. I review Renovate PR's daily to assess impacts before merging to main branch and pushing the update
+
+## 3. The Production (UGreen NAS)
+Deployment: Since I moved away from Portainer Stacks and use GitOps, use a GitOps Agent Workflow running on the NAS (GitHub runners running locally on NAS).
+NAS Path: Keep your standardized path: /volume2/FastSSD/docker/[app-name].
+Environment Variables: Continue using your .env pattern and host on NAS but never commit to GitHub.
+
+/docker/
+  ├── app-one/
+  │   ├── docker-compose.yml
+  │   ├── .env
+  │   └── src/
+  ├── app-two/
+  │   ├── docker-compose.yml
+  │   ├── .env
+  │   └── src/
+
 ### 🔭 Architecture & "Sovereign AI" Lab
 I recently migrated my self-hosted environment from a manual management model to a strictly declarative **GitOps model**. Beyond standard hosting, this environment serves as a research lab for **AI-Augmented Engineering and Software Development**.
 
