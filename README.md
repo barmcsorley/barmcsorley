@@ -27,7 +27,7 @@ While my day job involves organisational design and enterprise strategy, I belie
 
 ---
 
-🏠 Home Lab & GitOps
+*** 🏠 Home Lab & GitOps
 My home infrastructure is fully automated using a GitOps methodology.
 
 * Hardware: UGreen 2800DXP NAS (Intel N100 | 16GB RAM) 
@@ -38,7 +38,7 @@ My home infrastructure is fully automated using a GitOps methodology.
 
 * Security: Automated Trivy IaC scanning on every pull request.
 
-🏗️ Infrastructure Architecture: GitOps & DevSecOps
+*** 🏗️ Infrastructure Architecture: GitOps & DevSecOps
 My personal "sandbox" uses enterprise-grade patterns to manage over 35+ services on a UGreen 2800DXP 
 
 * Automated Dependency Management: Renovate monitors container registries for updates and pins versions via SHA256 digests for maximum supply-chain security 
@@ -49,7 +49,7 @@ My personal "sandbox" uses enterprise-grade patterns to manage over 35+ services
 
 * Observability & Health Checks: Containers use internal healthchecks (e.g., ollama list or curl) to verify service readiness, with real-time deployment status pushed to Discord via webhooks.
 
-📊 Real-Time Observability
+*** 📊 Real-Time Observability
 
 * **Status Page:** [![Uptime Kuma](https://img.shields.io/badge/Uptime_Kuma-Online-success?style=flat-square&logo=uptimekuma)](https://status.mcsorley.org.uk/) [Live Infrastructure Status](https://status.mcsorley.org.uk/) (Powered by Uptime Kuma & Cloudflare Zero Trust).
 
