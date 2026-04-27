@@ -61,7 +61,7 @@ My personal "sandbox" uses enterprise-grade patterns to manage over 35+ services
 Having "vibe coded" a number of standalone apps using Cursor, Antigravity and Claude Code that worked purely as standalone happy-path apps I wanted to evolve from prototypes to a structured, professional workflow. My setup uses a Macbook for local coding, a UGreen 2800DXP NAS (brilliant upgrade on my Synology NAS of many years) , a GitOps model using Renovate for update PR's ) and so I wanted to have a "Local-First, Git-Led" architecture. To clean up the "messy and disjointed" feel I treat my MacBook as the Workbench, my NAS as the Production Environment and using GitHub as the single source of truth.
 
 ### Current Daily Driver IDE/Tool: Cursor
-Whilst I will continue to play with Claude Code and Antigravity as it allows me access to all the underlying LLM models and also to track what is happening in the industry as move from pure-IDE to agentic-led dev I will continue to use Cursor as my main driver for a "single tool" as right now I think it offers the best balance of AI Autonomy (Composer/Agent mode) and Manual Control. Unlike Claude Code (terminal-only) or Antigravity (agent-first), Cursor lets me jump between high-level "vibing" and low-level technical debugging instantly. It also handles complex Git operations (branching, commits, PRs) natively which is essential for my GitOps workflow.
+Whilst I will continue to play with Claude Code and Google Antigravity as it allows me access to all the underlying LLM models and also to track what is happening in the industry as move from pure-IDE to agentic-led dev I will continue to use Cursor as my main driver for a "single tool" as right now I think it offers the best balance of AI Autonomy (Composer/Agent mode) and Manual Control. Unlike Claude Code (terminal-only) or Antigravity (agent-first), Cursor lets me jump between high-level "vibing" and low-level technical debugging instantly. It also handles complex Git operations (branching, commits, PRs) natively which is essential for my GitOps workflow.
 
 ### The "Vibe-to-Prod" Architecture
 To keep things organized I've adopted a Repository-Centric workflow. No files should live only on my MacBook or only on my NAS or only in GitHub.
@@ -104,6 +104,49 @@ I am currently pioneering **Agentic DevOps** workflows by running a private **Mo
 * **Dependency Management:** Automated via **Renovate** (Mend) to ensure supply chain security.
 * **Observability:** Prometheus & Uptime Kuma feeding into Grafana Dashboards.
 * **Networking:** Cloudflare Tunnels (Zero Trust) & Tailscale.
+
+# Homelab Infrastructure & 3-2-1 Backup Strategy
+
+A robust, automated infrastructure designed for high availability, data integrity, and disaster recovery. This setup manages a multi-terabyte library across tiered storage using a GitOps-driven deployment model.
+
+## 🏗️ Hardware Architecture
+
+* **Primary Node (Master):** UGreen 2800DXP NAS (Intel-based).
+    * **Tiered Storage:** FastSSD (Docker Configs/Database) & SlowHDD (Bulk Media).
+* **Secondary Node (Mirror):** Synology DS220+ NAS.
+    * **Role:** Active "Cold" Mirror and failover target.
+* **Cloud Layer:** IDrive e2 (S3-Compatible Object Storage).
+
+## 🛡️ The 3-2-1 Backup Strategy
+
+The infrastructure strictly adheres to the 3-2-1 backup rule (3 copies, 2 media types, 1 offsite).
+
+### 1. Primary Data (Live)
+The **UGreen NAS** serves as the "Source of Truth." All media management (Calibre, Photos, Documents) and application stacks are hosted here. Persistent data is stored on a FastSSD to ensure high-performance database operations (SQLite/PostgreSQL).
+
+### 2. Synchronization Layer (Local Mirror)
+Real-time synchronisation is handled by **Syncthing** using a **Send-Only (Master) to Receive-Only (Slave)** architecture.
+* **Scoped Syncing:** Instead of broad root sharing, the setup utilises "Internal Path Parity." Specific subfolders (e.g., `calibreweblib`, `Barry_Photos`) are mapped to identical internal container paths across different hardware.
+* **Data Integrity:** Implements strict ignore patterns for filesystem metadata (`@eaDir`, `.DS_Store`) and database temporary files (`-wal`, `-shm`) to prevent SQLite corruption.
+
+### 3. Offsite Backup (Disaster Recovery)
+Application configurations and critical data are backed up to **IDrive e2** via **Duplicati**.
+* **Security:** AES-256 encrypted backups.
+* **Efficiency:** Block-based deduplication and compression to optimise cloud storage usage.
+* **Retention:** Versioned backups allow for point-in-time recovery of the entire Docker ecosystem.
+
+## ⚙️ GitOps & Deployment Model
+
+The environment is managed via a **GitOps workflow**, moving away from manual UI-based stack management.
+* **Infrastructure as Code:** All Docker Compose configurations are version-controlled in GitHub.
+* **Security:** Sensitive environment variables (`.env`) are stored locally on the NAS, while the logic remains in Git.
+* **Update Management:** Utilises **Renovate** for automated dependency tracking and PR-based container updates, replacing traditional "latest" tag models.
+
+## 🌐 Connectivity & Security
+
+* **Remote Access:** Exposed via a remotely managed **Cloudflare Tunnel**, eliminating the need for local reverse proxies or open ports.
+* **Zero Trust:** All management tier applications (Portainer, Arr Stack, Tdarr) are secured behind a Cloudflare Zero Trust catch-all policy requiring Email OTP authentication.
+* **DNS:** Wildcard CNAME records point to a unified entry point, ensuring seamless service discovery.
 
 ```mermaid
 flowchart LR
