@@ -222,39 +222,51 @@ flowchart LR
     class Kuma,Grafana monitor;
     class AI_Agent ai;
 
-graph TD
-    subgraph Internet
-        User[Remote User] --> CF[Cloudflare Zero Trust MFA]
+flowchart TD
+    %% Define Node Styles
+    classDef cloud fill:#1a1a1a,stroke:#3b82f6,stroke-width:2px,color:#fff
+    classDef hardware fill:#0f172a,stroke:#60a5fa,stroke-width:3px,color:#fff
+    classDef storage fill:#1e293b,stroke:#94a3b8,stroke-width:1px,color:#cbd5e1
+    classDef app fill:#1e1b4b,stroke:#818cf8,stroke-width:1px,color:#fff
+
+    subgraph Internet_Access [Remote Access Layer]
+        User[External User] --> CF[Cloudflare Zero Trust / OTP]
         CF --> Tunnel[Cloudflare Tunnel]
     end
+    class CF,Tunnel cloud
 
-    subgraph UGreen_NAS [UGreen DXP2800 - Primary]
+    subgraph Primary_Hub [UGreen DXP2800 - Primary]
         direction TB
-        GitOps[GitOps / GitHub] -- Deploys --> Docker[Docker Engine]
         
-        subgraph Internal_Storage
-            SSD[FastSSD: Docker Configs / DBs]
-            HDD[SlowHDD: Bulk Media]
+        subgraph Storage_Tiers [Tiered Storage]
+            SSD[(FastSSD: Configs/DBs)]
+            HDD[(SlowHDD: Bulk Media)]
         end
+        class SSD,HDD storage
 
-        subgraph Stacks
+        subgraph Container_Stacks [Docker / GitOps]
             Media[Arr Stack / Jellyfin / Plex]
             Personal[Paperless-ngx / Immich]
-            Obs[Grafana / Prometheus / Loki]
+            Tools[qBit MAM / Public]
         end
+        class Media,Personal,Tools app
     end
+    class Primary_Hub hardware
 
-    subgraph Mirror_Target [Synology DS220+]
-        Sync_Slave[Syncthing: Receive Only]
+    subgraph Mirror_Site [Synology DS220+ - Mirror]
+        Syncthing[Syncthing: Receive Only]
     end
+    class Mirror_Site hardware
+    class Syncthing app
 
-    subgraph Cloud [Offsite: IDrive e2]
-        Backup[Duplicati: Encrypted Backup]
+    subgraph Offsite [IDrive e2 - Cloud]
+        Cloud_Backup[Duplicati: Encrypted]
     end
+    class Cloud_Backup cloud
 
-    %% Connectivity
-    Tunnel --> Docker
-    Docker --> SSD
-    Docker --> HDD
-    HDD -- Syncthing Master --> Sync_Slave
-    SSD -- Duplicati --> Backup
+    %% Data Flows
+    Tunnel --> Container_Stacks
+    Container_Stacks --> SSD
+    Container_Stacks --> HDD
+    HDD -- Syncthing Mirror --> Syncthing
+    SSD -- Daily Backup --> Cloud_Backup
