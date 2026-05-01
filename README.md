@@ -221,3 +221,40 @@ flowchart LR
     class NAS,Containers,Cloudflare,MCP_Server,Ollama infra;
     class Kuma,Grafana monitor;
     class AI_Agent ai;
+
+graph TD
+    subgraph Internet
+        User[Remote User] --> CF[Cloudflare Zero Trust MFA]
+        CF --> Tunnel[Cloudflare Tunnel]
+    end
+
+    subgraph UGreen_NAS [UGreen DXP2800 - Primary]
+        direction TB
+        GitOps[GitOps / GitHub] -- Deploys --> Docker[Docker Engine]
+        
+        subgraph Internal_Storage
+            SSD[FastSSD: Docker Configs / DBs]
+            HDD[SlowHDD: Bulk Media]
+        end
+
+        subgraph Stacks
+            Media[Arr Stack / Jellyfin / Plex]
+            Personal[Paperless-ngx / Immich]
+            Obs[Grafana / Prometheus / Loki]
+        end
+    end
+
+    subgraph Mirror_Target [Synology DS220+]
+        Sync_Slave[Syncthing: Receive Only]
+    end
+
+    subgraph Cloud [Offsite: IDrive e2]
+        Backup[Duplicati: Encrypted Backup]
+    end
+
+    %% Connectivity
+    Tunnel --> Docker
+    Docker --> SSD
+    Docker --> HDD
+    HDD -- Syncthing Master --> Sync_Slave
+    SSD -- Duplicati --> Backup
