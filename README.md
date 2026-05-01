@@ -39,4 +39,65 @@ I use a **Local-First, Git-Led** architecture to transition from AI prototypes b
 ### 🧬 Infrastructure Visualization
 (Insert PNG link here after downloading)
 
-[PASTE MERMAID CODE FROM ABOVE HERE]
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#1e3a8a', 'edgeLabelBackground':'#0f172a', 'primaryTextColor': '#fff', 'secondaryColor': '#1e293b', 'tertiaryColor': '#0f172a'}}}%%
+flowchart TD
+    %% Node Definitions
+    classDef cloud fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#fff
+    classDef hardware fill:#1e3a8a,stroke:#60a5fa,stroke-width:3px,color:#fff
+    classDef storage fill:#111827,stroke:#94a3b8,stroke-width:1px,color:#cbd5e1
+    classDef app fill:#0f172a,stroke:#3b82f6,stroke-width:1px,color:#fff
+    classDef ai fill:#2d1b4e,stroke:#a855f7,stroke-width:2px,color:#fff
+
+    subgraph Access [Remote Access Layer]
+        User([fa:fa-user User]) --> CF[fa:fa-shield-halved Cloudflare Zero Trust]
+        CF --> Tunnel[fa:fa-network-wired Cloudflare Tunnel]
+    end
+    class CF,Tunnel cloud
+
+    subgraph UGreen [fa:fa-server UGREEN DXP2800 - Primary Node]
+        direction TB
+        
+        subgraph Tiers [Tiered Storage]
+            SSD[(fa:fa-bolt FastSSD: Configs/DBs)]
+            HDD[(fa:fa-database SlowHDD: Media/Data)]
+        end
+        class SSD,HDD storage
+
+        subgraph Stacks [fa:fa-docker Container Infrastructure]
+            direction LR
+            subgraph Media [Media & Automation]
+                Jellyfin(Jellyfin-HT)
+                Arr[Arr Stack]
+                Tdarr(Tdarr)
+                qBit[qBit MAM/Pub]
+            end
+            
+            subgraph Data [Personal Data]
+                Paperless(Paperless-ngx)
+                Immich(Immich)
+            end
+
+            subgraph AI [Sovereign AI]
+                Ollama(fa:fa-brain Ollama/RAG)
+                MCP(MCP Server)
+            end
+        end
+        class Media,Data app
+        class AI ai
+    end
+    class UGreen hardware
+
+    subgraph DR [fa:fa-shield-check Disaster Recovery]
+        direction LR
+        Synology[fa:fa-copy DS220+ Mirror]
+        IDrive[fa:fa-cloud IDrive e2 Offsite]
+    end
+    class Synology hardware
+    class IDrive cloud
+
+    %% Logical Flows
+    Tunnel ==> Stacks
+    Stacks --> SSD
+    Stacks --> HDD
+    HDD -. Syncthing .-> Synology
+    SSD -. Duplicati .-> IDrive
