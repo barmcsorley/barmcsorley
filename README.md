@@ -30,9 +30,9 @@ A robust, automated infrastructure designed for high availability and disaster r
 ---
 
 ### 🔭 "Vibe-to-Prod" & Sovereign AI Lab
-I use a **Local-First, Git-Led** architecture to transition from AI prototypes built with **Cursor** and **Claude Code** to structured, professional deployments.
+I use a **Local-First, Git-Led** architecture to transition from AI prototypes built with **Google Antigravity** and **Gemini** to structured, professional deployments.
 
-*   **The Frontier:** Running a private **Model Context Protocol (MCP)** server on the NAS, allowing local LLMs (Ollama) to securely query infrastructure state and logs via natural language.
+*   **The Frontier:** Configured a global **Model Context Protocol (MCP)** filesystem server for Antigravity, pointing to a synced Google Drive directory on the NAS to unify local AI agent memory across chats.
 
 ---
 
