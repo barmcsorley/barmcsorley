@@ -32,7 +32,7 @@ A robust, automated infrastructure designed for high availability and disaster r
 ### 🔭 "Vibe-to-Prod" & Sovereign AI Lab
 I use a **Local-First, Git-Led** architecture to transition from AI prototypes built with **Google Antigravity** and **Gemini** to structured, professional deployments.
 
-*   **The Frontier:** Configured a global **Model Context Protocol (MCP)** filesystem server for Antigravity, pointing to a synced Google Drive directory on the NAS to unify local AI agent memory across chats.
+*   **The Frontier:** Configured a global **Model Context Protocol (MCP)** filesystem server for Antigravity, pointing to a synced Google Drive directory on the NAS to unify local AI agent memory across chats. This setup preserves context windows, solves "new chat amnesia" by loading past configs on startup, enables cross-agent task hand-offs, and keeps all my system documentation under sovereign, Git-controlled local ownership.
 
 ---
 
