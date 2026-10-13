@@ -36,9 +36,10 @@ I use a **Local-First, Git-Led** architecture to transition from AI prototypes b
 
 ---
 
-### 📊 Real-Time Observability
+### 📊 Real-Time Observability & AI Health Watchdog
 *   **Status Page:** [Live Infrastructure Status](https://status.mcsorley.org.uk/) (Powered by Uptime Kuma & Cloudflare Zero Trust).
-*   **Telemetry:** Real-time health metrics routed via Prometheus to Grafana with Discord alerting for all deployment and health events.
+*   **Autonomous AI Watchdog:** A dedicated Python agent correlates Docker socket lifecycles, active TCP application port probes, and Loki log streams every 15 minutes, feeding anomalous stack traces to **Google Gemini Flash** for zero-touch root cause analysis and Discord incident dispatch.
+*   **Telemetry:** Real-time health metrics routed via Prometheus and cAdvisor to Grafana with Discord alerting for all deployment and health events.
 
 ---
 
