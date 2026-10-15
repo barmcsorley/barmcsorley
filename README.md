@@ -12,7 +12,7 @@ I am a senior technology leader with over 20 years of experience driving DevSecO
 ---
 
 ### 🏗️ Infrastructure Architecture: GitOps & DevSecOps
-My personal environment manages 35+ services on a **UGreen 2800DXP NAS** using enterprise-grade patterns:
+My personal environment manages 90+ containers across 16 stacks on a **UGreen 2800DXP NAS** using enterprise-grade patterns:
 
 *   **Surgical Deployments:** A custom GitHub Actions pipeline on a self-hosted runner uses `git diff` to identify modified stacks, reducing deployment times from 40+ minutes to under 2 minutes.
 *   **Supply Chain Security:** **Renovate** monitors registries and pins versions via SHA256 digests. Every PR is scanned by **Trivy IaC** for vulnerabilities and misconfigurations.
@@ -36,9 +36,13 @@ I use a **Local-First, Git-Led** architecture to transition from AI prototypes b
 
 ---
 
-### 📊 Real-Time Observability & AI Health Watchdog
+### 📊 Real-Time Observability & Autonomous Self-Healing AIOps
 *   **Status Page:** [Live Infrastructure Status](https://status.mcsorley.org.uk/) (Powered by Uptime Kuma & Cloudflare Zero Trust).
-*   **Autonomous AI Watchdog:** A dedicated Python agent correlates Docker socket lifecycles, active TCP application port probes, and Loki log streams every 15 minutes, feeding anomalous stack traces to **Google Gemini Flash** for zero-touch root cause analysis and Discord incident dispatch.
+*   **Autonomous AI Watchdog & Self-Healing Pipeline:** A dedicated Python agent correlates Docker socket lifecycles, active TCP application port probes, and Loki log streams every 15 minutes, feeding anomalous stack traces to **Google Gemini Flash** (with seamless failover to local sovereign **Ollama**).
+*   **3-Tier Autonomous Triage:**
+    *   *Tier 1 (Zero-Touch):* Resolves trivial operational faults (UID/GID permissions, stale locks, share re-indexing, hung container restarts) directly on the host.
+    *   *Tier 2 (Human-in-the-Loop):* Generates structured root-cause analyses and Git diffs for compose/env changes, posting to Discord where a single `!approve` command commits and deploys via GitOps.
+    *   *Tier 3 (Persistent Agent Memory):* A sovereign Git daemon (`agent-memory-sync`) syncs agent knowledge every 5 minutes, allowing seamless hand-offs between NAS daemons and MacBook Antigravity.
 *   **Telemetry:** Real-time health metrics routed via Prometheus and cAdvisor to Grafana with Discord alerting for all deployment and health events.
 
 ---
